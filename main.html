@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мега приложение</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        nav {
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        input, button {
+            margin: 5px 0;
+            padding: 5px;
+        }
+        #result, #gameResult, #stopwatchDisplay {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Мега приложение</h1>
+        <nav>
+            <a href="#" onclick="showSection('caesar')">Шифр Цезаря</a>
+            <a href="#" onclick="showSection('game')">Угадай число</a>
+            <a href="#" onclick="showSection('stopwatch')">Секундомер</a>
+        </nav>
+
+        <div id="caesar" class="section active">
+            <h2>Шифр Цезаря</h2>
+            <input type="text" id="message" placeholder="Введите сообщение">
+            <input type="number" id="shift" placeholder="Сдвиг">
+            <button onclick="encrypt()">Зашифровать</button>
+            <button onclick="decrypt()">Расшифровать</button>
+            <div id="result"></div>
+        </div>
+
+        <div id="game" class="section">
+            <h2>Угадай число</h2>
+            <p>Компьютер загадал число от 0 до 9. У вас есть 3 попытки, чтобы угадать его.</p>
+            <input type="number" id="guess" min="0" max="9" placeholder="Ваше предположение">
+            <button onclick="makeGuess()">Угадать</button>
+            <div id="gameResult"></div>
+            <button id="newGameBtn" style="display:none;" onclick="startNewGame()">Играть снова</button>
+        </div>
+
+        <div id="stopwatch" class="section">
+            <h2>Секундомер</h2>
+            <input type="number" id="targetSeconds" min="1" placeholder="Введите целевое время (сек)">
+            <div id="stopwatchDisplay">00:00:00</div>
+            <button onclick="startStopwatch()">Старт</button>
+            <button onclick="stopStopwatch()">Стоп</button>
+            <button onclick="resetStopwatch()">Сброс</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
